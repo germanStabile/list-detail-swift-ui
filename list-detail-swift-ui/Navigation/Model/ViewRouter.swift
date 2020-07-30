@@ -10,12 +10,11 @@ import Foundation
 import Combine
 
 enum Roots {
-  case home
-  case profile
+  case list
 }
 
 class ViewRouter: ObservableObject {
-  @Published var currentRoot: Roots = SessionManager.isValidSession ? .profile : .home
+  @Published var currentRoot: Roots = .list
   
   static let shared = ViewRouter()
   

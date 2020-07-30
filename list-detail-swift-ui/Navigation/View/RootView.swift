@@ -22,10 +22,8 @@ struct RootView: View {
   
   func containedView() -> AnyView {
     switch router.currentRoot {
-    case .profile:
-      return AnyView(ProfileView())
-    default:
-      return AnyView(HomeView())
+    case .list:
+      return AnyView(ListView())
     }
   }
 }
