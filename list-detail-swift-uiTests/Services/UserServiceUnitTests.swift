@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import swift_ui_base
+@testable import list_detail_swift_ui
 
 class UserServiceUnitTests: XCTestCase {
   
