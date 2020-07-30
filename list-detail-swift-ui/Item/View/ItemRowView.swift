@@ -17,6 +17,7 @@ struct ItemRowView: View {
       image
         .resizable()
         .frame(width: 100, height: 100)
+        .aspectRatio(contentMode: .fit)
       
       Text(item.title)
         .modifier(SubtitleModifier())
