@@ -15,7 +15,7 @@ struct ListView: View {
   var body: some View {
     NavigationView {
       List(items, id: \.id) { item in
-        NavigationLink(destination: ItemView(item: item)) {
+        NavigationLink(destination: ClassyItemView(item: item)) {
           ItemRowView(item: item)
         }
       }
