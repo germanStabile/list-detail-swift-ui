@@ -18,6 +18,8 @@ class CreateItemViewModel: NSObject, ObservableObject, Identifiable {
     errorMessage: "Title can't be empty"
   )
   
+  @Published var image: UIImage?
+  
   var detail = "" {
     willSet {
       objectWillChange.send()
