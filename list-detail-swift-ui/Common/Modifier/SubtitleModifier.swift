@@ -9,11 +9,18 @@
 import SwiftUI
 
 struct SubtitleModifier: ViewModifier {
+  var foregroundColor: Color = .black
+  var textAlignment: TextAlignment = .center
+  var horizontalPadding: CGFloat = 5
+  var verticalPadding: CGFloat = 5
+  
   func body(content: Content) -> some View {
     content
-      .padding()
-      .foregroundColor(.black)
+      .padding(.vertical, verticalPadding)
+      .padding(.horizontal, horizontalPadding)
+      .foregroundColor(foregroundColor)
       .font(.subheadline)
+      .multilineTextAlignment(textAlignment)
   }
 }
 

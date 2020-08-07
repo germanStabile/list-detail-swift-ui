@@ -10,42 +10,48 @@ import SwiftUI
 
 struct CreateItemView: View {
   
+  @State var isShowingImagePicker = false
+  @State private var image: Image?
   @ObservedObject var viewModel = CreateItemViewModel()
   
   var body: some View {
-    GeometryReader { geometry in
-      VStack(spacing: 10) {
-        TextFieldView(fieldData: self.$viewModel.titleFieldData)
-        
-        
-        TextView() {
-          $0.text = self.viewModel.detail
-          $0.delegate = self.viewModel
-          $0.layer.borderColor = UIColor.systemRed.cgColor
-          $0.layer.borderWidth = 1
-          $0.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        }
-        .frame(
-          minHeight: self.textViewHeight(with: geometry.size.width - 50),
-          maxHeight: .infinity
-        )
-        .animation(.easeOut)
-        .padding(.horizontal, 20)
-        
-        Spacer()
-          .layoutPriority(1)
+    VStack(spacing: 20) {
+      
+      ItemImageView(
+        image: $image,
+        isShowingImagePicker: $isShowingImagePicker
+      )
+        .frame(alignment: .top)
+      
+      TextFieldView(fieldData: $viewModel.titleFieldData)
+        .padding(.top, 40)
+      
+      Text("Description:")
+        .modifier(SubtitleModifier(
+          foregroundColor: .lightGray,
+          horizontalPadding: 20
+        ))
+      
+      TextView() {
+        $0.text = self.viewModel.detail
+        $0.delegate = self.viewModel
+        $0.layer.borderColor = UIColor.altoGray.cgColor
+        $0.layer.borderWidth = 1
+      }
+      .frame(height: 150)
+      .padding(.horizontal, 20)
+      
+      .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
+        ImagePicker(image: self.$viewModel.image)
       }
       
+      Spacer()
     }
   }
   
-  func textViewHeight(with width: CGFloat) -> CGFloat {
-    let attributedString = NSAttributedString(
-      string: viewModel.detail
-    )
-    
-    let calculatedHeight = attributedString.height(withConstrainedWidth: width) + 10
-    return max(calculatedHeight, 20)
+  func loadImage() {
+    guard let inputImage = viewModel.image else { return }
+    image = Image(uiImage: inputImage)
   }
 }
 

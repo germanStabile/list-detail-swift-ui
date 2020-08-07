@@ -11,12 +11,12 @@ import Foundation
 
 extension Color {
   
-  static let darkGray = UIColor(red: 54, green: 61, blue: 79).asColor()
-  static let athensGray = UIColor(red: 229, green: 231, blue: 237).asColor()
-  static let altoGray = UIColor(red: 216, green: 216, blue: 216).asColor()
-  static let cadetBlue = UIColor(red: 167, green: 175, blue: 199).asColor()
-  static let lightGray = UIColor(red: 167, green: 175, blue: 199).asColor()
-  static let errorRed = UIColor(red: 255, green: 81, blue: 82).asColor()
+  static let darkGray = UIColor.darkGray.asColor()
+  static let athensGray = UIColor.athensGray.asColor()
+  static let altoGray = UIColor.altoGray.asColor()
+  static let cadetBlue = UIColor.cadetBlue.asColor()
+  static let lightGray = UIColor.lightGray.asColor()
+  static let errorRed = UIColor.errorRed.asColor()
 }
 
 extension UIColor {
@@ -30,4 +30,11 @@ extension UIColor {
   func asColor() -> Color {
     return Color(self)
   }
+  
+  static let darkGray = UIColor(red: 54, green: 61, blue: 79)
+  static let athensGray = UIColor(red: 229, green: 231, blue: 237)
+  static let altoGray = UIColor(red: 216, green: 216, blue: 216)
+  static let cadetBlue = UIColor(red: 167, green: 175, blue: 199)
+  static let lightGray = UIColor(red: 167, green: 175, blue: 199)
+  static let errorRed = UIColor(red: 255, green: 81, blue: 82)
 }
