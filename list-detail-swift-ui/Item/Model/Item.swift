@@ -14,4 +14,5 @@ struct Item: Identifiable {
   var title: String
   var detail: String?
   var image: Image?
+  var isAddItem = false
 }

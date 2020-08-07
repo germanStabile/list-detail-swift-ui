@@ -34,7 +34,6 @@ struct ClassyItemView: View {
           }
         }
         .frame(maxWidth: .infinity)
-        .padding(.bottom, 0)
         .background(Color.white)
         .cornerRadius(25, corners: [.topLeft, .topRight])
         .shadow(color: .darkGray, radius: 25, x: 0, y: 0)
