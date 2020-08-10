@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ClassyItemView: View {
+struct ItemView: View {
   
   var item: Item
   
@@ -50,7 +50,7 @@ struct ClassyItemView: View {
 
 struct ClassyItemView_Previews: PreviewProvider {
   static var previews: some View {
-    ClassyItemView(item: Item(
+    ItemView(item: Item(
       title: "Some title",
       detail: "Some detail that can be a really long text",
       image: nil

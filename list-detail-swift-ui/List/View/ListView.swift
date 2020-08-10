@@ -10,17 +10,17 @@ import SwiftUI
 
 struct ListView: View {
   
-  var items: [Item]
+  @ObservedObject var viewModel = ListViewModel()
   
   var body: some View {
     NavigationView {
-      List(items, id: \.id) { item in
+      List(viewModel.items, id: \.id) { item in
         NavigationLink(destination: {
           VStack {
             if item.isAddItem {
-              CreateItemView()
+              CreateItemView(with: self.viewModel)
             } else {
-              ClassyItemView(item: item)
+              ItemView(item: item)
             }
           }
         }()) {
@@ -31,35 +31,8 @@ struct ListView: View {
   }
 }
 
-
 struct ListView_Previews: PreviewProvider {
   static var previews: some View {
-    ListView(items: [
-      Item(
-        title: "Add item",
-        image: Image(systemName: "plus.circle"),
-        isAddItem: true
-      ),
-      Item(
-        title: "Title 1",
-        detail: "Some long long detail for title 1 that can go for ages and ages and ages",
-        image: nil
-      ),
-      Item(
-        title: "Title 1",
-        detail: "Some long long detail for title 1 that can go for ages and ages and ages",
-        image: nil
-      ),
-      Item(
-        title: "Title 1",
-        detail: "Some long long detail for title 1 that can go for ages and ages and ages",
-        image: nil
-      ),
-      Item(
-        title: "Title 1",
-        detail: "Some long long detail for title 1 that can go for ages and ages and ages",
-        image: nil
-      )
-    ])
+    ListView()
   }
 }

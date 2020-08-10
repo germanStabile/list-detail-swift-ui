@@ -6,7 +6,6 @@
 //  Copyright © 2020 Rootstrap. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class CreateItemViewModel: NSObject, ObservableObject, Identifiable {
@@ -20,11 +19,11 @@ class CreateItemViewModel: NSObject, ObservableObject, Identifiable {
   
   @Published var image: UIImage?
   
-  var detail = "" {
-    willSet {
-      objectWillChange.send()
-    }
+  var isValid: Bool {
+    titleFieldData.isValid && image != nil
   }
+  
+  var detail = ""
 }
 
 extension CreateItemViewModel: UITextViewDelegate {
