@@ -1,8 +1,8 @@
 //
-//  ItemView.swift
+//  ClassyItemView.swift
 //  list-detail-swift-ui
 //
-//  Created by Germán Stábile on 7/30/20.
+//  Created by Germán Stábile on 7/31/20.
 //  Copyright © 2020 Rootstrap. All rights reserved.
 //
 
@@ -13,23 +13,38 @@ struct ItemView: View {
   var item: Item
   
   var body: some View {
-    VStack(spacing: 5) {
-      image
-        .resizable()
-        .aspectRatio(contentMode: .fit)
-        .frame(maxWidth: .infinity, maxHeight: 200)
-        .background(Color.red)
-        .padding(.top, 0)
-      
-      Text(item.title)
-        .modifier(MainTitle())
-      
-      if item.detail != nil {
-       Text(item.detail!)
-        .modifier(SubtitleModifier())
+    VStack {
+      ScrollView(.vertical, showsIndicators: false) {
+        GeometryReader { reader in
+          self.image
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .offset(y: -reader.frame(in: .global).minY)
+            .frame(width: UIScreen.main.bounds.width, height:  reader.frame(in: .global).minY + 300)
+        }
+        .frame(height: 280)
+        
+        VStack {
+          Text(item.title)
+            .modifier(MainTitle())
+          
+          if item.detail != nil {
+            Text(item.detail!)
+              .modifier(SubtitleModifier())
+          }
+          
+          Rectangle()
+            .foregroundColor(Color.white)
+            .frame(height: 40)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .background(Color.white)
+        .cornerRadius(25, corners: [.topLeft, .topRight])
+        .padding(.top, -20)
       }
     }
-    .background(Color.blue)
+    .edgesIgnoringSafeArea(.all)
+    .background(Color.white.edgesIgnoringSafeArea(.all))
   }
   
   var image: Image {

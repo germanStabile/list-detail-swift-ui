@@ -23,33 +23,7 @@ struct RootView: View {
   func containedView() -> AnyView {
     switch router.currentRoot {
     case .list:
-      return AnyView(ListView(items: [
-        Item(
-          title: "Add item",
-          image: Image(systemName: "plus.circle"),
-          isAddItem: true
-        ),
-        Item(
-          title: "Title 1",
-          detail: "Some long long detail for title 1 that can go for ages and ages and ages",
-          image: nil
-        ),
-        Item(
-          title: "Title 1",
-          detail: "Some long long detail for title 1 that can go for ages and ages and ages",
-          image: nil
-        ),
-        Item(
-          title: "Title 1",
-          detail: "Some long long detail for title 1 that can go for ages and ages and ages",
-          image: nil
-        ),
-        Item(
-          title: "Title 1",
-          detail: "Some long long detail for title 1 that can go for ages and ages and ages",
-          image: nil
-        )
-      ]))
+      return AnyView(ListView())
     }
   }
 }
