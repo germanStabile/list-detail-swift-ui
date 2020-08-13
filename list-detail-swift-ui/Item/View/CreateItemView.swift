@@ -39,7 +39,7 @@ struct CreateItemView: View {
       
       Text("Description:")
         .modifier(SubtitleModifier(
-          foregroundColor: .lightGray,
+          foregroundColor: .darkGray,
           horizontalPadding: 20
         ))
       
@@ -48,6 +48,8 @@ struct CreateItemView: View {
         $0.delegate = self.viewModel
         $0.layer.borderColor = UIColor.altoGray.cgColor
         $0.layer.borderWidth = 1
+        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.textColor = .darkGray
       }
       .frame(height: 150)
       .padding(.horizontal, 20)
