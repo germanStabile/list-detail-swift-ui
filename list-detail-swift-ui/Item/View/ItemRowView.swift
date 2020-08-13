@@ -16,8 +16,10 @@ struct ItemRowView: View {
     HStack(spacing: 10) {
       image
         .resizable()
-        .frame(width: 100, height: 100)
+        .frame(width: 50, height: 50)
         .aspectRatio(contentMode: .fit)
+        .cornerRadius(8)
+        .padding(.vertical, 20)
       
       Text(item.title)
         .modifier(SubtitleModifier())

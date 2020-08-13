@@ -24,23 +24,26 @@ struct ItemView: View {
         }
         .frame(height: 280)
         
-        VStack {
-          Text(item.title)
-            .modifier(MainTitle())
+        ZStack(alignment: .top) {
+          ShadowHelperView()
           
-          if item.detail != nil {
-            Text(item.detail!)
-              .modifier(SubtitleModifier())
+          VStack {
+            Text(item.title)
+              .modifier(MainTitle())
+            
+            if item.detail != nil {
+              Text(item.detail!)
+                .modifier(SubtitleModifier())
+            }
+            
+            Rectangle()
+              .foregroundColor(Color.white)
+              .frame(height: 100)
           }
-          
-          Rectangle()
-            .foregroundColor(Color.white)
-            .frame(height: 40)
+          .frame(minWidth: 0, maxWidth: .infinity)
+          .background(Color.white)
+          .cornerRadius(25, corners: [.topLeft, .topRight])
         }
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.white)
-        .cornerRadius(25, corners: [.topLeft, .topRight])
-        .padding(.top, -20)
       }
     }
     .edgesIgnoringSafeArea(.all)

@@ -19,6 +19,7 @@ struct ItemImageView: View {
       itemImage
         .resizable()
         .frame(width: 200, height: 200)
+        .cornerRadius(8)
       
       Button(action: { self.editAvatarButtonTapped() }) {
         Image(systemName: "pencil.circle")
